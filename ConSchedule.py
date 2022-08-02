@@ -88,23 +88,18 @@ def WriteSchedule(day, textFile): #ONLY WORKS PROPERLY IF THERE ARE NO CONFLICTS
     textFile.write(tracks + "\n")
     textFile.write(dividingLine + "\n")
 
-    timeInt = 10
-
-    for slot in time:
+    for timeInt, slot in enumerate(time, start=10):
         slot = int(slot)
         if slot == 0:
-            textFile.write(str(timeInt) + ":00" + empty + "\n")
-            textFile.write(dividingLine + "\n")
-        else:
-            if slot == 1:
-                textFile.write(str(timeInt) + ":00" + trackOne + "\n")
-            elif slot == 2:
-                textFile.write(str(timeInt) + ":00" + trackTwo + "\n")
-            elif slot == 3:
-                textFile.write(str(timeInt) + ":00" + trackThree + "\n")
-            elif slot == 4:
-                textFile.write(str(timeInt) + ":00" + trackFour + "\n")
-            elif slot == 101:
-                textFile.write(str(timeInt) + ":00" + track101 + "\n")
-            textFile.write(dividingLine + "\n")
-        timeInt += 1
+            textFile.write(f"{str(timeInt)}:00{empty}" + "\n")
+        elif slot == 1:
+            textFile.write(f"{str(timeInt)}:00{trackOne}" + "\n")
+        elif slot == 101:
+            textFile.write(f"{str(timeInt)}:00{track101}" + "\n")
+        elif slot == 2:
+            textFile.write(f"{str(timeInt)}:00{trackTwo}" + "\n")
+        elif slot == 3:
+            textFile.write(f"{str(timeInt)}:00{trackThree}" + "\n")
+        elif slot == 4:
+            textFile.write(f"{str(timeInt)}:00{trackFour}" + "\n")
+        textFile.write(dividingLine + "\n")
